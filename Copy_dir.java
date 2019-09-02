@@ -10,13 +10,17 @@ import java.io.IOException;
 public class Copy_dir {
     public static void main(String[] args) {
         String s1="C:\\Users\\Administrator\\Desktop\\Test";
-        String s2="C:\\Users\\Administrator\\Desktop\\new";
+        String s2="C:\\Users\\Administrator\\Desktop\\Test\\h";
 
         File file1=new File(s1);
         copy_dir(file1,s2);
     }
     public static void copy_dir(File file1,String s2){
         File file2=new File(s2,file1.getName());
+        if(s2.contains(file1.getAbsolutePath())){
+            System.out.println("要拷贝的路径是子目录！！！");
+            return;
+        }
         file2.mkdirs();
         if (file1.isFile()){
             try {
